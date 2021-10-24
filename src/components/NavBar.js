@@ -26,13 +26,16 @@ const NavBar = observer(() => {
                 {user.isAuth ?                   
                     <Nav className="ml-auto" style={{color: 'white'}}>
                         
-                        
+                        {user.user.role === 'ADMIN' ?
                         <Button
-                            variant={"outline-light"} 
-                            onClick={() => history.push(ADMIN_ROUTE)}
+                        variant={"outline-light"} 
+                        onClick={() => history.push(ADMIN_ROUTE)}
                         >
                             Админ панель
                         </Button>
+                        :
+                        <div></div>
+                        }
                         <Button
                             className="ml-2"
                             variant={"outline-light"} 
