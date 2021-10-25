@@ -40,7 +40,7 @@ const CreateOrder = observer(({amount, total, show, onHide, deleteDevice}) => {
             </Modal.Header>
             <Modal.Body>
                 <Row className="justify-content-between">
-                <Col className="m-0">{`Получатель: ${user.user.email}`}</Col> 
+                <Col className="m-0">{`Получатель: ${user.user.username}`}</Col> 
                 <Col className="m-0">{`Сумма заказа: ${total} руб.`}</Col> 
                 </Row>
                 {

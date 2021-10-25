@@ -26,7 +26,7 @@ const NavBar = observer(() => {
                 {user.isAuth ?                   
                     <Nav className="ml-auto" style={{color: 'white'}}>
                         
-                        {user.user.role === 'ADMIN' ?
+                        {user.user.role ==='ADMIN' ?
                         <Button
                         variant={"outline-light"} 
                         onClick={() => history.push(ADMIN_ROUTE)}

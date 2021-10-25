@@ -41,10 +41,10 @@ const Basket = observer(() => {
                         array.push(data[i].deviceId) 
                         amountDict[data[i].deviceId] = data[i].amount
                     }
-                    const arrayToString = array.join('-')
+                    const arrayJSON = JSON.stringify(array)
                     //const amountArrayToString = amountArray.join('-')
                     //const commonArrayToString = `${arrayToString}--${amountArrayToString}`
-                    setBasketDeviceId(arrayToString)
+                    setBasketDeviceId(arrayJSON)
                     setAmount(amountDict)
                     console.log(amountDict)
                 } else {
@@ -52,7 +52,7 @@ const Basket = observer(() => {
                 }
 
                 //setTimeout(() => {
-                fetchDevices(null, null, 1, 100, basketDeviceId).then(data => {
+                fetchDevices(null, null, 1, 100, basketDeviceId, null).then(data => {
                     device.setBasketDevices(data.rows) // device.setBasketDevices | setDevices
                     setChangeAm(false)
                 })

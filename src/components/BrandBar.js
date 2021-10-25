@@ -10,14 +10,18 @@ const BrandBar = observer(() => {
             {device.brands.map(brand =>
                 <Col>
                 <Card
-                    style={{cursor: 'pointer', borderRadius: 0}} // углы были закругленные
+                    style={{cursor: 'pointer', borderRadius: 5}} // углы были закругленные
                     key={brand.id}
                     className="p-3"
                     onClick={() => {
                         device.setSearchField('')
-                        device.setSelectedBrand(brand)
+                        if (brand.id !== device.selectedBrand.id) {
+                            device.setSelectedBrand(brand)
+                        } else {
+                            device.setSelectedBrand({})
+                        }
                     }}
-                    border={brand.id === device.selectedBrand.id ? 'danger' : 'light'}
+                    border={brand.id === device.selectedBrand.id ? 'dark' : 'light'}
                 >
                     {brand.name}
                 </Card>

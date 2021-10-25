@@ -7,7 +7,7 @@ import { fetchOrders } from '../http/orderAPI';
 
 const Orders = observer(() => {
     const {user} = useContext(Context)
-    const [orders, setOrders] = useState()
+    const [orders, setOrders] = useState([])
 
     useEffect(() => {
         fetchOrders(user.user.id).then(data => {
@@ -50,7 +50,7 @@ const Orders = observer(() => {
                                 </Col>
                             </Row>
                         </ListGroup.Item>
-                        {orders ? 
+                        {orders[0] ? 
                             orders.map(order => 
                             <ListGroup.Item 
                                 key={order.id}
@@ -60,10 +60,10 @@ const Orders = observer(() => {
                                         {order.id}
                                     </Col>
                                     <Col>
-                                        {`${order.totalPrice} руб.`}
+                                        {order.createdAt}
                                     </Col>
                                     <Col>
-                                        {order.createdAt}
+                                        {`${order.totalPrice} руб.`}
                                     </Col>
                                     <Col>
                                         {order.placeOfIssue}
@@ -100,7 +100,7 @@ const Orders = observer(() => {
                                 })}
                             </ListGroup.Item>)
                             :
-                            <div className="d-flex justify-content-center align-items-center">
+                            <div className="m-5 d-flex justify-content-center align-items-center">
                                 У вас еще нет заказов
                             </div>
                         }
